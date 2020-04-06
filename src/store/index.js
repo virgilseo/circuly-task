@@ -15,3 +15,4 @@ export default new Vuex.Store({
 });
 
 console.log(clientData);
+console.log(clientData.androidPayCards[0].subscriptions[0].transactions[0]);
