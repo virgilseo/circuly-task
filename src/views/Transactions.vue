@@ -2,6 +2,7 @@
   <div class="transactions">
     <h1>Transactions</h1>
     <ul>
+      <!-- Loop trought client transactions and render them on the page -->
       <li v-for="transaction in transactions" :key="transaction.id">
         <ul>
           <li v-for="(value, propertyName, index) in transaction" :key="index">
@@ -12,7 +13,6 @@
     </ul>
   </div>
 </template>
-
 
 <script>
 
