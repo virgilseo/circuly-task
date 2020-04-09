@@ -2,11 +2,12 @@
 <template>
   <div class="add-address">
     <h1>Add customer address</h1>
-    <form class="form" action="index.html" method="get">
+    <form class="form" action="index.html" method="post">
+      <!-- Create form inputs and capture their respective values -->
       <input type="text" v-model="company" name="company-name" placeholder="Company Name" value="">
       <input type="text" v-model="firstName" name="first-name" placeholder="First Name" value="">
       <input type="text" v-model="lastName" name="last-name"  placeholder="Last Name"  value="">
-      <input type="text" v-model="country" name="country" placeholder="Country" value="">
+      <input type="text" v-model="countryName" name="country" placeholder="Country" value="">
       <input type="text" v-model="countryCodeAlpha2" name="country-code2" placeholder="Contry Code Alpha 2" value="">
       <input type="text" v-model="countryCodeAlpha3" name="country-code3" placeholder="Contry Code Alpha 3" value="">
       <input type="text" v-model="countryCodeNumeric" name="country-code" placeholder="Contry Code Numeric" value="">
@@ -16,7 +17,7 @@
       <input type="text" v-model="region" name="region" placeholder="Region" value="">
       <input type="text" v-model="extendedAddress" name="extended-address" placeholder="Extended Address" value="">
       <input type="text" v-model="customerId" name="customer-id" placeholder="Customer Id" value="">
-      <input type="submit" value="Submit">
+      <input type="submit" value="Submit" @click="addAddress">
     </form>
   </div>
 </template>
@@ -32,7 +33,7 @@
           company: null,
           firstName: null,
           lastName: null,
-          country: null,
+          countryName: null,
           countryCodeAlpha2: null,
           countryCodeAlpha3: null,
           countryCodeNumeric: null,
@@ -42,6 +43,49 @@
           region: null,
           extendedAddress: null,
           customerId: null
+        }
+      },
+
+      methods: {
+
+        // Update the server(db.json file) with new customer address based on form input values
+
+        addAddress(event) {
+          const axios = require('axios');
+          const date = new Date();
+
+          axios.post('http://localhost:3000/newAddress', {
+              company: this.company,
+              countryCodeAlpha2: this.countryCodeAlpha2,
+              countryCodeAlpha3: this.countryCodeAlpha3,
+              countryCodeNumeric: this.countryCodeNumeric,
+              countryName: this.countryName,
+              createdAt: {
+                "date": `${date.getUTCFullYear()}-${date.getUTCMonth()}-${date.getUTCDate()} ${date.getUTCHours()}:${date.getUTCMinutes()}:${date.getUTCSeconds()}.${date.getUTCMilliseconds()}`,
+                "timezone": "UTC",
+                "timezone-type": 3
+              },
+              customerId: this.customerId,
+              extendedAddress: this.extendedAddress,
+              firstName: this.firstName,
+              lastName: this.lastName,
+              locality: this.city,
+              postalCode: this.postalCode,
+              region: this.region,
+              streetAddress: this.streetAddress,
+              updatedAt: {
+                "date": `${date.getUTCFullYear()}-${date.getUTCMonth()}-${date.getUTCDate()} ${date.getUTCHours()}:${date.getUTCMinutes()}:${date.getUTCSeconds()}.${date.getUTCMilliseconds()}`,
+                "timezone": "UTC",
+                "timezone-type": 3
+              }
+          }).then(resp => {
+              console.log(resp.data);
+          }).catch(error => {
+              console.log(error);
+          });
+
+          event.preventDefault();
+
         }
       }
   }
