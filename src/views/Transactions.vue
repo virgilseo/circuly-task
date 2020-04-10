@@ -5,6 +5,7 @@
       <!-- Loop trought client transactions and render them on the page -->
       <li v-for="transaction in transactions" :key="transaction.id">
         <ul>
+          <li><span>Client name: </span><span>{{transaction.billing.firstName}} {{transaction.billing.lastName}}</span></li>
           <li><span>Amount: </span><span>{{transaction.amount}}</span></li>
           <li><span>Currency: </span><span>{{transaction.currencyIsoCode}}</span></li>
           <li><span>Merchant account id: </span><span>{{transaction.merchantAccountId}}</span></li>
