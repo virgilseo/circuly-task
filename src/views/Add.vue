@@ -19,6 +19,12 @@
       <input type="text" v-model="customerId" name="customer-id" placeholder="Customer Id" value="">
       <input type="submit" value="Submit" @click="addAddress">
     </form>
+    <section v-if='success'>
+      <p>Form submited successfuly!</p>
+    </section>
+    <section v-if='error'>
+      <p>Form was not submited successfuly!</p>
+    </section>
   </div>
 </template>
 
@@ -42,7 +48,9 @@
           postalCode: null,
           region: null,
           extendedAddress: null,
-          customerId: null
+          customerId: null,
+          success: false,
+          error: false
         }
       },
 
@@ -80,8 +88,11 @@
               }
           }).then(resp => {
               console.log(resp.data);
+              this.success = true;
+
           }).catch(error => {
               console.log(error);
+              this.error = true;
           });
 
           event.preventDefault();
