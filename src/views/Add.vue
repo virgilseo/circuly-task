@@ -4,25 +4,25 @@
     <h1>Add customer address</h1>
     <form class="form" action="index.html" method="post">
       <!-- Create form inputs and capture their respective values -->
-      <input type="text" v-model="company" name="company-name" placeholder="Company Name" value="">
-      <input type="text" v-model="firstName" name="first-name" placeholder="First Name" value="">
-      <input type="text" v-model="lastName" name="last-name"  placeholder="Last Name"  value="">
-      <input type="text" v-model="countryName" name="country" placeholder="Country" value="">
-      <input type="text" v-model="countryCodeAlpha2" name="country-code2" placeholder="Contry Code Alpha 2" value="">
-      <input type="text" v-model="countryCodeAlpha3" name="country-code3" placeholder="Contry Code Alpha 3" value="">
-      <input type="text" v-model="countryCodeNumeric" name="country-code" placeholder="Contry Code Numeric" value="">
-      <input type="text" v-model="city" name="city" placeholder="City" value="">
-      <input type="text" v-model="streetAddress" name="street-address" placeholder="Street Address" value="">
-      <input type="text" v-model="postalCode" name="postal-code" placeholder="Postal code" value="">
-      <input type="text" v-model="region" name="region" placeholder="Region" value="">
-      <input type="text" v-model="extendedAddress" name="extended-address" placeholder="Extended Address" value="">
-      <input type="text" v-model="customerId" name="customer-id" placeholder="Customer Id" value="">
+      <input type="text" v-model="data.company" name="company-name" placeholder="Company Name" value="">
+      <input type="text" v-model="data.firstName" name="first-name" placeholder="First Name" value="">
+      <input type="text" v-model="data.lastName" name="last-name"  placeholder="Last Name"  value="">
+      <input type="text" v-model="data.countryName" name="country" placeholder="Country" value="">
+      <input type="text" v-model="data.countryCodeAlpha2" name="country-code2" placeholder="Contry Code Alpha 2" value="">
+      <input type="text" v-model="data.countryCodeAlpha3" name="country-code3" placeholder="Contry Code Alpha 3" value="">
+      <input type="text" v-model="data.countryCodeNumeric" name="country-code" placeholder="Contry Code Numeric" value="">
+      <input type="text" v-model="data.city" name="city" placeholder="City" value="">
+      <input type="text" v-model="data.streetAddress" name="street-address" placeholder="Street Address" value="">
+      <input type="text" v-model="data.postalCode" name="postal-code" placeholder="Postal code" value="">
+      <input type="text" v-model="data.region" name="region" placeholder="Region" value="">
+      <input type="text" v-model="data.extendedAddress" name="extended-address" placeholder="Extended Address" value="">
+      <input type="text" v-model="data.customerId" name="customer-id" placeholder="Customer Id" value="">
       <input type="submit" value="Submit" @click="addAddress">
     </form>
-    <section v-if='success'>
+    <section v-if='status.success'>
       <p>Form submited successfuly!</p>
     </section>
-    <section v-if='error'>
+    <section v-if='status.error'>
       <p>Form was not submited successfuly!</p>
     </section>
   </div>
@@ -36,21 +36,26 @@
     data() {
 
         return {
-          company: null,
-          firstName: null,
-          lastName: null,
-          countryName: null,
-          countryCodeAlpha2: null,
-          countryCodeAlpha3: null,
-          countryCodeNumeric: null,
-          city: null,
-          streetAddress: null,
-          postalCode: null,
-          region: null,
-          extendedAddress: null,
-          customerId: null,
-          success: false,
-          error: false
+          data: {
+            company: null,
+            firstName: null,
+            lastName: null,
+            countryName: null,
+            countryCodeAlpha2: null,
+            countryCodeAlpha3: null,
+            countryCodeNumeric: null,
+            city: null,
+            streetAddress: null,
+            postalCode: null,
+            region: null,
+            extendedAddress: null,
+           customerId: null
+
+          },
+          status: {
+            success: false,
+            error: false
+          }
         }
       },
 
@@ -63,24 +68,24 @@
           const date = new Date();
 
           axios.post('http://localhost:3000/newAddress', {
-              company: this.company,
-              countryCodeAlpha2: this.countryCodeAlpha2,
-              countryCodeAlpha3: this.countryCodeAlpha3,
-              countryCodeNumeric: this.countryCodeNumeric,
-              countryName: this.countryName,
+              company: this.data.company,
+              countryCodeAlpha2: this.data.countryCodeAlpha2,
+              countryCodeAlpha3: this.data.countryCodeAlpha3,
+              countryCodeNumeric: this.data.countryCodeNumeric,
+              countryName: this.data.countryName,
               createdAt: {
                 "date": `${date.getUTCFullYear()}-${date.getUTCMonth()}-${date.getUTCDate()} ${date.getUTCHours()}:${date.getUTCMinutes()}:${date.getUTCSeconds()}.${date.getUTCMilliseconds()}`,
                 "timezone": "UTC",
                 "timezone-type": 3
               },
-              customerId: this.customerId,
-              extendedAddress: this.extendedAddress,
-              firstName: this.firstName,
-              lastName: this.lastName,
-              locality: this.city,
-              postalCode: this.postalCode,
-              region: this.region,
-              streetAddress: this.streetAddress,
+              customerId: this.data.customerId,
+              extendedAddress: this.data.extendedAddress,
+              firstName: this.data.firstName,
+              lastName: this.data.lastName,
+              locality: this.data.city,
+              postalCode: this.data.postalCode,
+              region: this.data.region,
+              streetAddress: this.data.streetAddress,
               updatedAt: {
                 "date": `${date.getUTCFullYear()}-${date.getUTCMonth()}-${date.getUTCDate()} ${date.getUTCHours()}:${date.getUTCMinutes()}:${date.getUTCSeconds()}.${date.getUTCMilliseconds()}`,
                 "timezone": "UTC",
@@ -88,11 +93,25 @@
               }
           }).then(resp => {
               console.log(resp.data);
-              this.success = true;
+              this.status.success = true;
+
+              // Clear form inputs after the form was submited successfuly 
+
+              var self = this;
+              Object.keys(this.$data.data).forEach((key) =>
+                  self.$data.data[key] = null
+              );
 
           }).catch(error => {
               console.log(error);
-              this.error = true;
+              this.status.error = true;
+
+              // Clear form inputs after error
+
+              var self = this;
+              Object.keys(this.$data.data).forEach((key) =>
+                  self.$data.data[key] = null
+              );
           });
 
           event.preventDefault();
