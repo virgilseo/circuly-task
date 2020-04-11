@@ -1,32 +1,32 @@
 <template>
   <div class="new-addresses">
-    <h1>New address</h1>
+    <h1 class="page-titles">New address</h1>
     <!--Display error message to the user when appropriate-->
     <section v-if="error">
-      <p>Something went wrong. Please try again later.</p>
+      <p class="address-error">Something went wrong. Please try again later.</p>
     </section>
       <!--Display loader container to the user when appropriate-->
-    <section v-else-if='loading'>
+    <section class="address-loader" v-else-if='loading'>
       <p>Loading...</p>
     </section>
     <!--Display message if no new address has been added yet-->
-    <section v-else-if="Object.keys(hits).length === 0">
+    <section class="address-not-found" v-else-if="Object.keys(hits).length === 0">
       <p>No new addresses have been addeded yet. Please use the form.</p>
     </section>
-    <ul v-else>
+    <ul class="address-list-container" v-else>
       <!-- Display new address on the page -->
-        <li><span>Company: </span><span>{{hits.company}}</span></li>
-        <li><span>First name: </span><span>{{hits.firstName}}</span></li>
-        <li><span>Last name: </span><span>{{hits.lastName}}</span></li>
-        <li><span>Country: </span><span>{{hits.countryName}}</span></li>
-        <li><span>City: </span><span>{{hits.locality}}</span></li>
-        <li><span>Street address: </span><span>{{hits.streetAddress}}</span></li>
-        <li><span>Postal code: </span><span>{{hits.postalCode}}</span></li>
-        <li><span>Extended address: </span><span>{{hits.extendedAddress}}</span></li>
-        <li><span>Region: </span><span>{{hits.region}}</span></li>
-        <li><span>Customer id: </span><span>{{hits.customerId}}</span></li>
-        <li><span>Created: </span><span>{{hits.createdAt.date}} {{hits.createdAt.timezone}}</span></li>
-        <li><span>Updated: </span><span>{{hits.updatedAt.date}} {{hits.updatedAt.timezone}}</span></li>
+        <li><span class="address-label">Company: </span><span class="address-item">{{hits.company}}</span></li>
+        <li><span class="address-label">First name: </span><span class="address-item">{{hits.firstName}}</span></li>
+        <li><span class="address-label">Last name: </span><span class="address-item">{{hits.lastName}}</span></li>
+        <li><span class="address-label">Country: </span><span class="address-item">{{hits.countryName}}</span></li>
+        <li><span class="address-label">City: </span><span class="address-item">{{hits.locality}}</span></li>
+        <li><span class="address-label">Street address: </span><span class="address-item">{{hits.streetAddress}}</span></li>
+        <li><span class="address-label">Postal code: </span><span class="address-item">{{hits.postalCode}}</span></li>
+        <li><span class="address-label">Extended address: </span><span class="address-item">{{hits.extendedAddress}}</span></li>
+        <li><span class="address-label">Region: </span><span class="address-item">{{hits.region}}</span></li>
+        <li><span class="address-label">Customer id: </span><span class="address-item">{{hits.customerId}}</span></li>
+        <li><span class="address-label">Created: </span><span class="address-item">{{hits.createdAt.date}} {{hits.createdAt.timezone}}</span></li>
+        <li><span class="address-label">Updated: </span><span class="address-item">{{hits.updatedAt.date}} {{hits.updatedAt.timezone}}</span></li>
     </ul>
   </div>
 </template>
