@@ -1,7 +1,7 @@
 
 <template>
   <div class="add-address">
-    <h1>Add customer address</h1>
+    <h1 class="page-titles">Add customer address</h1>
     <form class="form" action="index.html" method="post">
       <!-- Create form inputs and capture their respective values -->
       <input type="text" v-model="data.company" name="company-name" placeholder="Company Name" value="">
@@ -17,12 +17,12 @@
       <input type="text" v-model="data.region" name="region" placeholder="Region" value="">
       <input type="text" v-model="data.extendedAddress" name="extended-address" placeholder="Extended Address" value="">
       <input type="text" v-model="data.customerId" name="customer-id" placeholder="Customer Id" value="">
-      <input type="submit" value="Submit" @click="addAddress">
+      <button class="form-submit" type="submit" value="Submit" @click="addAddress">Submit</button>
     </form>
-    <section v-if='status.success'>
+    <section class="form-status" v-if='status.success'>
       <p>Form submited successfuly!</p>
     </section>
-    <section v-if='status.error'>
+    <section class="form-status" v-if='status.error'>
       <p>Form was not submited successfuly!</p>
     </section>
   </div>
@@ -95,7 +95,7 @@
               console.log(resp.data);
               this.status.success = true;
 
-              // Clear form inputs after the form was submited successfuly 
+              // Clear form inputs after the form was submited successfuly
 
               var self = this;
               Object.keys(this.$data.data).forEach((key) =>
