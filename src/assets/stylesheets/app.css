@@ -19,6 +19,17 @@ html, body {
   color: #2c3e50;
 }
 
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 /*Navigation*/
 
 #nav {
