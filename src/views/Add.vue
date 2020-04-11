@@ -1,7 +1,7 @@
 
 <template>
   <div class="add-address">
-    <h1 class="page-titles">Add customer address</h1>
+    <h1 class="form-tittle">Add customer address</h1>
     <form class="form" action="index.html" method="post">
       <!-- Create form inputs and capture their respective values -->
       <input type="text" v-model="data.company" name="company-name" placeholder="Company Name" value="">

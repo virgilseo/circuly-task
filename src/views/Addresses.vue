@@ -1,7 +1,7 @@
 <template>
   <div class="addresses">
     <h1 class="page-titles">Addresses</h1>
-    <ul>
+    <ul class="adresses-container">
       <!-- Loop trought client addresses and render them on the page -->
       <li v-for="address in addresses" :key="address.id" >
         <ul class="address-list-container">

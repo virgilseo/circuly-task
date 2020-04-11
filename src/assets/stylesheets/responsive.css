@@ -1,0 +1,30 @@
+
+@media screen and (min-width: 700px) {
+
+  .addresses, .transactions, .add-address, .new-addresses {
+    max-width: 700px;
+    margin: auto;
+  }
+
+  .form-tittle, .page-titles {
+    font-size: 2em;
+  }
+
+  .form-tittle {
+    margin-left: 0;
+  }
+
+  .form input {
+    padding: 12px 16px;
+    width: 48%;
+  }
+
+  .form {
+    justify-content: space-between;
+    flex-flow: wrap;
+  }
+
+  .list-container, .address-list-container {
+    width: 80%;
+  }
+}

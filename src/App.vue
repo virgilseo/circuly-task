@@ -4,7 +4,7 @@
       <router-link to="/">Home</router-link>
       <router-link to='/transactions'>Transactions</router-link>
       <router-link to='/addresses'>Addresses</router-link>
-      <router-link to='/add'>Add address</router-link> 
+      <router-link to='/add'>Add address</router-link>
       <router-link to='/new-address'>New address</router-link>
     </div>
   <router-view />
@@ -14,5 +14,6 @@
 <style>
 
 @import './assets/stylesheets/app.css';
+@import './assets/stylesheets/responsive.css';
 
 </style>

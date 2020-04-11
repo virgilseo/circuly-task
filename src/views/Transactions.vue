@@ -1,9 +1,9 @@
 <template>
-  <div class="transactions-container">
+  <div class="transactions">
     <h1 class="page-titles">Transactions</h1>
-    <ul>
+    <ul class="transaction-container">
       <!-- Loop trought client transactions and render them on the page -->
-      <li class="transaction-container" v-for="transaction in transactions" :key="transaction.id">
+      <li v-for="transaction in transactions" :key="transaction.id">
         <ul class="list-container">
           <li><span class="transaction-label">Client name </span><span class="transaction-item">{{transaction.billing.firstName}} {{transaction.billing.lastName}}</span></li>
           <li><span class="transaction-label">Amount </span><span class="transaction-item">{{transaction.amount}}</span></li>

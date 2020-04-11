@@ -57,7 +57,8 @@ ul {
 /*Transactions Page*/
 
 .transactions-container {
-  width: 100%;
+  display: flex;
+  flex-flow: wrap;
 }
 
 .page-titles {
@@ -171,4 +172,8 @@ ul {
 .form-status {
   margin-left: 10px;
   padding: 6px 10px;
+}
+
+.form-tittle {
+  margin-left: 5%;
 }
