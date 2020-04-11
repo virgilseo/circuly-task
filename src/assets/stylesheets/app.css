@@ -53,3 +53,44 @@ ul {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+/*Transactions Page*/
+
+.transactions-container {
+  width: 100%;
+}
+
+.page-titles {
+  font-size: 1.4em;
+  padding: 5px 8px;
+  border-bottom: 3px solid #42b983;
+}
+
+.list-container {
+  margin-left: 8px;
+  padding: 10px 8px;
+  box-shadow: 2px 2px 9px grey;
+  width: 90%;
+  border-radius: 8px;
+  line-height: 1.5em;
+}
+
+.list-container li {
+  padding-bottom: 10px;
+}
+
+.transaction-label {
+  padding: 4px;
+  background-color: #42b983;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.transaction-item {
+  margin-left: 10px;
+  font-weight: 500;
+}
+
+.transaction-container {
+  margin-bottom: 10px;
+}
