@@ -1,27 +1,4 @@
 {
-  "newAddress": {
-    "company": "1986",
-    "countryCodeAlpha2": "Germany",
-    "countryCodeAlpha3": "Germany",
-    "countryCodeNumeric": "Germany",
-    "countryName": "Germany",
-    "createdAt": {
-      "date": "2020-3-10 12:20:38.38",
-      "timezone": "UTC",
-      "timezone-type": 3
-    },
-    "customerId": null,
-    "extendedAddress": "Ludenberger. 56",
-    "firstName": "Virgil",
-    "lastName": "Avram",
-    "locality": "Düsseldorf",
-    "postalCode": "40629",
-    "region": null,
-    "streetAddress": "Ludenberger. 56",
-    "updatedAt": {
-      "date": "2020-3-10 12:20:38.38",
-      "timezone": "UTC",
-      "timezone-type": 3
-    }
-  }
+  "newAddress": {}
+  
 }
