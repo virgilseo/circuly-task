@@ -1,7 +1,7 @@
 
 @media screen and (min-width: 750px) {
 
-  .addresses, .transactions, .add-address, .new-addresses {
+  .addresses, .transactions, .add-address, .new-addresses, .home {
     max-width: 750px;
     margin: auto;
   }

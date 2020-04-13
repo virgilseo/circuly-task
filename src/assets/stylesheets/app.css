@@ -187,3 +187,25 @@ ul {
   font-size: 1.4em;
   margin-left: 5%;
 }
+
+/*Home page*/
+
+.message-container {
+  width: 80%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+
+}
+.home {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.circuly-text, .best-text {
+  color: #42b983;
+  font-weight: bold;
+}
