@@ -15,18 +15,18 @@
     </section>
     <ul class="address-list-container" v-else>
       <!-- Display new address on the page -->
-        <li><span class="address-label">Company: </span><span class="address-item">{{hits.company}}</span></li>
-        <li><span class="address-label">First name: </span><span class="address-item">{{hits.firstName}}</span></li>
-        <li><span class="address-label">Last name: </span><span class="address-item">{{hits.lastName}}</span></li>
-        <li><span class="address-label">Country: </span><span class="address-item">{{hits.countryName}}</span></li>
-        <li><span class="address-label">City: </span><span class="address-item">{{hits.locality}}</span></li>
-        <li><span class="address-label">Street address: </span><span class="address-item">{{hits.streetAddress}}</span></li>
-        <li><span class="address-label">Postal code: </span><span class="address-item">{{hits.postalCode}}</span></li>
-        <li><span class="address-label">Extended address: </span><span class="address-item">{{hits.extendedAddress}}</span></li>
-        <li><span class="address-label">Region: </span><span class="address-item">{{hits.region}}</span></li>
-        <li><span class="address-label">Customer id: </span><span class="address-item">{{hits.customerId}}</span></li>
-        <li><span class="address-label">Created: </span><span class="address-item">{{hits.createdAt.date}} {{hits.createdAt.timezone}}</span></li>
-        <li><span class="address-label">Updated: </span><span class="address-item">{{hits.updatedAt.date}} {{hits.updatedAt.timezone}}</span></li>
+        <li><span class="address-label">Company </span><span class="address-item">{{hits.company}}</span></li>
+        <li><span class="address-label">First name </span><span class="address-item">{{hits.firstName}}</span></li>
+        <li><span class="address-label">Last name </span><span class="address-item">{{hits.lastName}}</span></li>
+        <li><span class="address-label">Country </span><span class="address-item">{{hits.countryName}}</span></li>
+        <li><span class="address-label">City </span><span class="address-item">{{hits.locality}}</span></li>
+        <li><span class="address-label">Street address </span><span class="address-item">{{hits.streetAddress}}</span></li>
+        <li><span class="address-label">Postal code </span><span class="address-item">{{hits.postalCode}}</span></li>
+        <li><span class="address-label">Extended address </span><span class="address-item">{{hits.extendedAddress}}</span></li>
+        <li><span class="address-label">Region </span><span class="address-item">{{hits.region}}</span></li>
+        <li><span class="address-label">Customer id </span><span class="address-item">{{hits.customerId}}</span></li>
+        <li><span class="address-label">Created </span><span class="address-item">{{hits.createdAt.date}} {{hits.createdAt.timezone}}</span></li>
+        <li><span class="address-label">Updated </span><span class="address-item">{{hits.updatedAt.date}} {{hits.updatedAt.timezone}}</span></li>
     </ul>
   </div>
 </template>

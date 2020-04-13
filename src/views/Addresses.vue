@@ -3,8 +3,8 @@
     <h1 class="page-titles">Addresses</h1>
     <ul class="adresses-container">
       <!-- Loop trought client addresses and render them on the page -->
-      <li v-for="address in addresses" :key="address.id" >
-        <ul class="address-list-container">
+      <li class="address-list-container" v-for="address in addresses" :key="address.id" >
+        <ul>
           <li><span class="address-label">Company </span><span class="address-item">{{address.company}}</span></li>
           <li><span class="address-label">First name </span><span class="address-item">{{address.firstName}}</span></li>
           <li><span class="address-label">Last name </span><span class="address-item">{{address.lastName}}</span></li>
