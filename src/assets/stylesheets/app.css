@@ -6,6 +6,9 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background: #ECE9E6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 * {
@@ -16,7 +19,7 @@ html, body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+   color: #2c3e50;
 }
 
 li {
@@ -44,14 +47,16 @@ ul {
   font-weight: bold;
   color: #2c3e50;
   padding: 5px;
+  border-bottom: 3px solid transparent;
+  text-decoration: none;
 }
 
 #nav a:hover {
-  color: #42b983;
+  border-bottom: 3px solid #42b983;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  border-bottom: 3px solid #42b983;
 }
 
 /*Transactions Page*/
@@ -73,6 +78,7 @@ ul {
   width: 90%;
   border-radius: 8px;
   line-height: 1.5em;
+  background-color: #fff;
 }
 
 .list-container li {
@@ -84,6 +90,7 @@ ul {
   background-color: #42b983;
   color: #fff;
   border-radius: 4px;
+  font-weight: bold;
 }
 
 .transaction-item {
@@ -106,6 +113,7 @@ ul {
   line-height: 1.5em;
   margin-bottom: 15px;
   line-height: 1.5em;
+  background-color: #fff;
 }
 
 .address-list-container li {
@@ -117,6 +125,7 @@ ul {
   background-color: #42b983;
   color: #fff;
   border-radius: 4px;
+  font-weight: bold;
 }
 
 .address-item {
