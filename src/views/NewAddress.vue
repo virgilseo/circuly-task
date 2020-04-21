@@ -1,6 +1,6 @@
 <template>
   <div class="new-addresses">
-    <h1 class="page-titles">New address</h1>
+    <h1 class="page-titles">New addresses</h1>
     <!--Display error message to the user when appropriate-->
     <section v-if="error">
       <p class="address-error">Something went wrong. Please try again later.</p>
@@ -10,23 +10,27 @@
       <p>Loading...</p>
     </section>
     <!--Display message if no new address has been added yet-->
-    <section class="address-not-found" v-else-if="Object.keys(hits).length === 0">
-      <p>No new addresses have been addeded yet. Please use the form.</p>
+    <section class="address-not-found" v-else-if="hits.length === 0">
+      <p>No new addresses have been added yet. Please use the form.</p>
     </section>
-    <ul class="address-list-container" v-else>
-      <!-- Display new address on the page -->
-        <li><span class="address-label">Company </span><span class="address-item">{{hits.company}}</span></li>
-        <li><span class="address-label">First name </span><span class="address-item">{{hits.firstName}}</span></li>
-        <li><span class="address-label">Last name </span><span class="address-item">{{hits.lastName}}</span></li>
-        <li><span class="address-label">Country </span><span class="address-item">{{hits.countryName}}</span></li>
-        <li><span class="address-label">City </span><span class="address-item">{{hits.locality}}</span></li>
-        <li><span class="address-label">Street address </span><span class="address-item">{{hits.streetAddress}}</span></li>
-        <li><span class="address-label">Postal code </span><span class="address-item">{{hits.postalCode}}</span></li>
-        <li><span class="address-label">Extended address </span><span class="address-item">{{hits.extendedAddress}}</span></li>
-        <li><span class="address-label">Region </span><span class="address-item">{{hits.region}}</span></li>
-        <li><span class="address-label">Customer id </span><span class="address-item">{{hits.customerId}}</span></li>
-        <li><span class="address-label">Created </span><span class="address-item">{{hits.createdAt.date}} {{hits.createdAt.timezone}}</span></li>
-        <li><span class="address-label">Updated </span><span class="address-item">{{hits.updatedAt.date}} {{hits.updatedAt.timezone}}</span></li>
+    <ul v-else class="adresses-container">
+      <!-- Loop trought hits from the database and display new addresses on the page -->
+      <li class="address-list-container" v-for="hit in hits" :key="hit.id">
+        <ul>
+            <li><span class="address-label">Company </span><span class="address-item">{{hit.company}}</span></li>
+            <li><span class="address-label">First name </span><span class="address-item">{{hit.firstName}}</span></li>
+            <li><span class="address-label">Last name </span><span class="address-item">{{hit.lastName}}</span></li>
+            <li><span class="address-label">Country </span><span class="address-item">{{hit.countryName}}</span></li>
+            <li><span class="address-label">City </span><span class="address-item">{{hit.locality}}</span></li>
+            <li><span class="address-label">Street address </span><span class="address-item">{{hit.streetAddress}}</span></li>
+            <li><span class="address-label">Postal code </span><span class="address-item">{{hit.postalCode}}</span></li>
+            <li><span class="address-label">Extended address </span><span class="address-item">{{hit.extendedAddress}}</span></li>
+            <li><span class="address-label">Region </span><span class="address-item">{{hit.region}}</span></li>
+            <li><span class="address-label">Customer id </span><span class="address-item">{{hit.customerId}}</span></li>
+            <li><span class="address-label">Created </span><span class="address-item">{{hit.createdAt.date}} {{hit.createdAt.timezone}}</span></li>
+            <li><span class="address-label">Updated </span><span class="address-item">{{hit.updatedAt.date}} {{hit.updatedAt.timezone}}</span></li>
+        </ul>
+      </li>
     </ul>
   </div>
 </template>
@@ -40,7 +44,7 @@ export default {
   data() {
 
     return {
-      hits: {},
+      hits: [],
       loading: true,
       error: false
     }
@@ -52,19 +56,17 @@ export default {
 
     const axios = require('axios');
 
-    axios.get('http://localhost:3000/newAddress')
+    axios.get('http://localhost:3000/newAddresses')
     .then(response => {
-      this.hits = response.data
-      console.log(this.hits)
+      this.hits = response.data;
     })
     .catch(error => {
-      console.log(error)
-      this.error = true
-      console.log(this.error)
+      console.log(error);
+
+      this.error = true;
     })
-    .finally(() => this.loading = false)
+    .finally(() => this.loading = false);
   }
 }
-
 
 </script>

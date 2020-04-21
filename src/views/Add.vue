@@ -67,7 +67,7 @@
           const axios = require('axios');
           const date = new Date();
 
-          axios.post('http://localhost:3000/newAddress', {
+          axios.post('http://localhost:3000/newAddresses', {
               company: this.data.company,
               countryCodeAlpha2: this.data.countryCodeAlpha2,
               countryCodeAlpha3: this.data.countryCodeAlpha3,
