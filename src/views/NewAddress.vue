@@ -16,6 +16,7 @@
     <ul v-else class="adresses-container">
       <!-- Loop trought hits from the database and display new addresses on the page -->
       <li class="address-list-container" v-for="hit in hits" :key="hit.id">
+        <button type="button" name="delete" @click="deleteAddress(hit.id)">Delete</button>
         <ul>
             <li><span class="address-label">Company </span><span class="address-item">{{hit.company}}</span></li>
             <li><span class="address-label">First name </span><span class="address-item">{{hit.firstName}}</span></li>
@@ -66,6 +67,33 @@ export default {
       this.error = true;
     })
     .finally(() => this.loading = false);
+  },
+
+  methods : {
+
+//Delete address on user input
+
+    deleteAddress(addressId) {
+
+//Delete address from the server
+
+      const axios = require('axios');
+
+      axios.delete(`http://localhost:3000/newAddresses/${addressId}`)
+      .then(response => {
+        console.log(response.request.status);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+//Delete address from the page
+
+     const addressList = this.hits.filter(address => address.id != addressId)
+     console.log(addressList);
+
+     this.hits = addressList;
+    }
   }
 }
 
